@@ -89,7 +89,8 @@ func (req *Request) Full() (*FullResponse, error) {
 
 	}
 
-	io.CopyN(ioutil.Discard, resBuf, 11)
+	// https://wiki.vg/Query#Client_to_Server_Packet_Format
+	io.CopyN(ioutil.Discard, resBuf, 10)
 
 	for {
 		playerName, err := resBuf.ReadString(0x00)
